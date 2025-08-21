@@ -19,12 +19,20 @@ if __name__ == '__main__':
 	dims = picam2.camera_configuration()['main']['size']
 	width, height = dims[0], dims[1]
 	capture_array = picam2.capture_array("main")
-
-	with open("pycamera2_frame", "wb") as f:
-		f.close()
 	
 	with open("pycamera2_frame", "r+b") as f:
 		mm = mmap.mmap(f.fileno(),0)
-		mm.seek(0)
-		mm.write(capture_array)
+
+		while True:
+			mm.seek(0)
+			a = mm.read_byte()
+			mm.seek(0)
+			if a == 255:
+				a = 0
+			else:
+				a = a+1
+			mm.write_byte(a)
+			mm.seek(1)
+			mm.write(capture_array)
+			config_capture = picam2.create_still_configuration()
 		mm.close()

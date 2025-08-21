@@ -5,3 +5,5 @@ edition = "2024"
 
 [dependencies]
 file_mmap = "0.20.0"
+image = "0.25.6"
+minifb = "0.28.0"
