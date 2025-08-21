@@ -1,0 +1,7 @@
+[package]
+name = "camera"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+file_mmap = "0.20.0"
