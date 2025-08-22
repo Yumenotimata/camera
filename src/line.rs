@@ -25,8 +25,10 @@ impl LineInfo {
 
 	pub fn scan(&mut self,r_th:u8,g_th:u8,b_th:u8,rev:bool) -> Option<(u8,i32)>{
 		let mut p = self.fm.as_ptr();
+		// println!("{}", unsafe{p.read_unaligned()} );
 		if self.last_index != unsafe{p.read_unaligned()} {
 			self.last_index = unsafe{p.read_unaligned()};
+			// println!("yet");
 
 			unsafe{p = p.add((self.rect_offset * self.camera_width * 3 + 1) as usize)};
 
