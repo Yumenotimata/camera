@@ -34,5 +34,5 @@ if __name__ == '__main__':
 			mm.write_byte(a)
 			mm.seek(1)
 			mm.write(capture_array)
-			config_capture = picam2.create_still_configuration()
+			capture_array = picam2.capture_array("main")
 		mm.close()
